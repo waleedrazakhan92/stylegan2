@@ -1,6 +1,6 @@
 # stylegan2
 **Note** 
-This repository is just a refactored version of StyleGAN2 from NVlabs and idealo's Image Super-resolution models. Most of the code is taken from the original repositories https://github.com/NVlabs/stylegan2-ada and https://github.com/idealo/image-super-resolution. The code is changed a bit to make it user friendly for beginners.
+This repository is just a refactored version of StyleGAN2 from NVlabs and idealo's Image Super-resolution models. Most of the code is taken from the original repositories https://github.com/NVlabs/stylegan2-ada, https://github.com/aydao/stylegan2-surgery.git and https://github.com/idealo/image-super-resolution. The code is changed a bit to make it user friendly for beginners.
 
 **Overview**
 This repository aims to provide a method to generate high resolution synthetic images by combining the powers of StyleGAN2-ada and Image Super-resolution. StyleGAN2 is trained on a desired set of images to generate more of the kind but even the stylegan2-ada takes a lot of memory and time to train. So what this repository proposes is that you can train the stylegan2 on slightely low resolution images, e.g 256,256, and then apply the superpixel model to convert the images to higher resolutions, thus saving time and memory. 
@@ -23,4 +23,4 @@ The next step is to generate *tfrecords* using the script '''run_generate_tf_rec
 '''
 ./run_generate_tf_record
 '''
-Next you have to select a pretrained checkpoint ```.pkl``` file. By default the code downloads three checkpoint files with 256, 512, 1024 image resolutions respectively. If your
+Next you have to select a pretrained checkpoint ```.pkl``` file. By default the code downloads three checkpoint files with 256, 512, 1024 image resolutions respectively. If you're training on one of these resolutions then you can use on of the prtrained models. But if the desired resolution is different, then you can use the stylegan surgery repository to change the resolution of an already trained model checkpoint. Below is the process for
