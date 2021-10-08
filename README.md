@@ -19,8 +19,23 @@ Then run the bash script ```run_preprocess``` to preprocess the images into desi
 ```
 ./run_preprocess
 ```
-The next step is to generate *tfrecords* using the script '''run_generate_tf_record'''. This will start the process of generating tfrecords for the model to train on. You can set the path of tfrecords by setting the ***tf_record_path*** in the config.py file. 
+The next step is to generate *tfrecords* using the script:
+```
+./run_generate_tf_record
+```
+This will start the process of generating tfrecords for the model to train on. You can set the path of tfrecords by setting the ***tf_record_path*** in the config.py file. 
 '''
 ./run_generate_tf_record
 '''
-Next you have to select a pretrained checkpoint ```.pkl``` file. By default the code downloads three checkpoint files with 256, 512, 1024 image resolutions respectively. If you're training on one of these resolutions then you can use on of the prtrained models. But if the desired resolution is different, then you can use the stylegan surgery repository to change the resolution of an already trained model checkpoint. Below is the process for
+Next you have to select a pretrained checkpoint ```.pkl``` file. By default the code downloads three checkpoint files with 256, 512, 1024 image resolutions respectively. If you're training on one of these resolutions then you can use on of the prtrained models. But if the desired resolution is different, then you can use the stylegan surgery repository to change the resolution of an already trained model checkpoint. Below is the process for changing the resolution:
+
+Choose the desired height and width values:
+```
+python stylegan2-surgery/create_initial_network_pkl.py --width 256 --height 256
+```
+
+Then select the pretrained network you want to perform surgery on:
+```
+python stylegan2-surgery/copy_weights.py stylegan2-ffhq-config-f.pkl network-initial-config-f-256x256-0.pkl --output_pkl surgery_output.pkl
+```
+Now place this output pickle file in the ***pretrained*** folder and you're all set to start the training process.
