@@ -1,0 +1,2 @@
+pip install isr --no-deps
+python3 superpixel.py

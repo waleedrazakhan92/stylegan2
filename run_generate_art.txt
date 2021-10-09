@@ -1,0 +1,2 @@
+source config.py
+python3 generate_art.py $inference_ckpt 0

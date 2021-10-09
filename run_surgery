@@ -1,0 +1,3 @@
+source config.py
+python3 stylegan2-surgery/create_initial_network_pkl.py --width $width --height $height
+python stylegan2-surgery/copy_weights.py 'pretrained_models/pretrained_1024.pkl' network-initial-config-f-1024x1024-0.pkl --output_pkl $resume_pkl

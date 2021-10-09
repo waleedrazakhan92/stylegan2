@@ -1,0 +1,2 @@
+source config.py
+python3 stylegan2-ada/dataset_tool.py create_from_images $tf_record_path $resized_path

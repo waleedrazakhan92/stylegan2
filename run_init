@@ -1,0 +1,16 @@
+source config.py
+
+mkdir $pretrained_models
+
+# download pretrained models
+wget -O pretrained_256.pkl http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-horse-config-f.pkl
+wget -O pretrained_512.pkl http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-car-config-f.pkl
+wget -O pretrained_1024.pkl http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-ffhq-config-f.pkl
+
+mv *.pkl $pretrained_models
+
+# cloning style-gan
+git clone https://github.com/NVlabs/stylegan2-ada.git
+git clone https://github.com/aydao/stylegan2-surgery.git
+
+cp training_loop.py stylegan2-ada/training/
