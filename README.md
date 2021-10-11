@@ -39,3 +39,20 @@ Then select the pretrained network you want to perform surgery on:
 python stylegan2-surgery/copy_weights.py stylegan2-ffhq-config-f.pkl network-initial-config-f-256x256-0.pkl --output_pkl surgery_output.pkl
 ```
 Now place this output pickle file in the ***pretrained*** folder and you're all set to start the training process.
+Set the path of ***resume_ckpt*** to a pretrained checkpoint and run the training with:
+```
+./run_train\
+```
+During the training process the model generates synthetic images and places them along with the model checkpoints in a directory. You can set the path 
+of that directory in the **config.py** file by setting the ***results_dir*** variable. Once the quality of the generated images is good enough, you can
+manually stop the training process.
+
+# Inference
+For inference set the path of the trained model to ***inference_ckpt*** in the ***config.py*** file and set the ***grid height*** and ***grid*** width variables. For simplicity, set the grid height to 1 and grid width to the number of images you want to generate. Then run:
+```
+./run_generate_art
+```
+To upscale the images use:
+```
+./run_upscale
+```
